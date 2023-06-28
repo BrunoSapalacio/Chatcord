@@ -1,0 +1,280 @@
+@import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
+
+.content-chat {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-areas: "chats messages peoples";
+  background-color: $bg-color-primary;
+
+  .container-chats {
+    background-color: $bg-color-secondary;
+    margin: 1rem;
+    border-radius: 10px;
+    width: 271px;
+    grid-area: chats;
+    color: $txt-color-primary;
+
+    .header-chats {
+      margin: 1rem 0;
+    }
+
+    .rooms {
+      .room {
+        border: 1px solid #2c2c2c;
+        
+
+        &:hover {
+          background-color: #969696;
+        }
+        
+        .btn-container {
+          display: flex;
+          justify-content: flex-end;
+
+          .btn-chat {
+            width: 1.5rem;
+            height: 1.2rem;
+            border: none;
+            transition: 0.1s ease-in-out;
+
+            &:hover {
+              filter: grayscale(50);
+            }
+
+            &__delete { // Método BEM - é uma metodologia que visa ajudar o desenvolvedor a criar pedaços reutilizáveis de código
+              background-color: red;
+              color: #fff;
+            }
+
+            &__info { // Método BEM - é uma metodologia que visa ajudar o desenvolvedor a criar pedaços reutilizáveis de código
+              background-color: #fff;
+            }
+          }
+
+          
+        }
+
+        .room-content {
+          display: flex;
+          padding: 1rem 0;
+          margin-left: 1rem;
+          cursor: pointer;
+        }
+
+        .type-chat {
+          width: 2rem;
+          height: 2rem;
+          margin: auto 0.5rem;
+          filter: grayscale(100);
+        }
+
+         .image-chat {
+           width: 57px;
+           height: 57px;
+           border-radius: 50%;
+           display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &__text {
+            color: #fff;
+            font-size: 1.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+          }
+        }
+
+        .title-chat {
+          display: flex;
+          margin: 0 1rem;
+          flex-direction: column;
+          justify-content: center;
+          align-items: flex-start;
+
+          h5 {
+            font-size: 1rem;
+          }
+
+          p {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
+
+    .footer-chats {
+      position: relative;
+      width: 100%;
+
+      button {
+        margin: 1rem;
+        padding: 1rem;
+      }
+    }
+  }
+
+  .container-messages {
+    background-color: $bg-color-primary;
+    grid-area: messages;
+    margin: 1rem 0;
+    color: $txt-color-primary;
+    height: 98%;
+    overflow: auto;
+    overflow-x: hidden;
+
+    .view-messages {
+      width: 100%;
+      height: 92%;
+      overflow:auto;
+      
+      .content-message {
+        margin: 1.5rem 1rem;
+        display: grid;
+        grid: "img name"
+              "img message";
+        grid-template-columns: 50px 1fr;
+
+        img {
+          grid-area: img;
+          margin: auto;
+          width: 40px;
+          max-width: 50px;
+          border-radius: 50%;
+        }
+  
+        .name {
+          display: flex;
+          grid-area: name;
+          margin-left: 1rem;
+          gap: 0.5rem;
+          align-items: center;
+
+          h5 {
+            font-size: 1rem;
+          }
+
+          span {
+            font-size: 0.8rem;
+            color: #5C5C5C;
+          }
+        }
+
+        .message {
+          grid-area: message;
+          text-align: initial;
+          margin-left: 1rem;
+          
+        }
+      }
+
+      .notice {
+        margin: 1rem;
+        font-style: italic;
+      }
+    }
+    .container-message {
+      height: 7%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .box-message {
+        display: flex;
+        width: 95%;
+        height: 60%;
+        background-color: $bg-color-secondary;
+        border-radius: 5px;
+  
+        input[type="text"] {
+          width: 110%;
+          background-color: none;
+          border: none;
+          padding: 0 1rem;
+          background-color: $bg-color-secondary;
+          color: $txt-color-primary;
+          outline: none;
+        }
+  
+        input[type="submit"] {
+          right: 2.7rem;
+          border: none;
+          background: url(./../../images/icons/Send.svg) 50% no-repeat;
+          background-size: 1.4rem;
+          padding: 0 1.4rem;
+          @include BtnHoverAnimation();
+        }
+      }
+    }
+    
+  }
+
+  .container-members {
+    background-color: $bg-color-secondary;
+    padding: 1rem 0;
+    margin: 1rem;
+    border-radius: 10px;
+    color: $txt-color-primary;
+    min-width: 250px;
+    grid-area: peoples;
+
+    &__header {
+      margin: 1rem auto 2rem auto;
+      display: flex;
+      gap: 0.5rem;
+      padding-bottom: 2rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      border-bottom: 1px solid #3d3d3d;
+
+      .img {
+        border-radius: 50%;
+        width: 8rem;
+        height: 8rem;
+        margin: 1rem 0;
+        background-color: #111;
+      }
+    }
+
+    .members {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+      gap: 1rem;
+      width: 80%;
+      margin: auto;
+  
+      h4 {
+        margin: 0.5rem 0;
+      }
+  
+      li {
+        width: 100%;
+        display: flex;
+        margin: 0 1rem;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      &-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+      }
+    }
+
+    .image-user {
+      img {
+        display: block;
+        width: 2rem;
+        border-radius: 50%;
+      }
+  }
+}
+
+}

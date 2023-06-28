@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Chat from './pages/Chat/Index';
+import Login from './pages/Login';
+import useAuth from './hooks/useAuth'
 
 function App() {
+  const { user } = useAuth();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* Verifica se o usuario está logado */}
+      { user ?  <Chat></Chat> : <Login></Login> } 
     </div>
   );
 }
